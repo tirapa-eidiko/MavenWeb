@@ -19,11 +19,13 @@
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
+			<classifier>deliverable</classifier> 
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>servlet-api</artifactId>
 			<version>2.5</version>
+			<classifier>deliverable</classifier> 
 		</dependency>
 	</dependencies>
 </project>
