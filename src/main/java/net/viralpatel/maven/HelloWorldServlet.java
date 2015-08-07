@@ -20,7 +20,7 @@ public class HelloWorldServlet extends HttpServlet {
 		resp.setContentType("text/html");
 		
 		PrintWriter out = resp.getWriter();
-		out.print("Hello World from TIrapa Reddy TondapuTTT");
+		out.print("example on jenkins");
 		out.flush();
 		out.close();
 	}
