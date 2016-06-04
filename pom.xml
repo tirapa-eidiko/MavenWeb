@@ -3,6 +3,10 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>MavenWeb</groupId>
 	<!--Modified artifactId>MavenWeb</artifactId-->
+	<!--Modified artifactId>MavenWeb</artifactId-->
+	<!--Modified artifactId>MavenWeb</artifactId-->
+	<!--Modified artifactId>MavenWeb</artifactId-->
+	<!--Modified artifactId>MavenWeb</artifactId-->
 	<artifactId>MavenWeb</artifactId>
 	<packaging>war</packaging>
 	<version>0.0.1-SNAPSHOT</version>
