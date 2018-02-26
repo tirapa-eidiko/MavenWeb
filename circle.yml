@@ -1,4 +1,4 @@
 notify:
   webhooks:
     # A list of hook hashes, containing the URL field
-    - url: https://requestb.in/zspgd2zs
+    - url: http://requestbin.fullcontact.com/u8cvk1u8
