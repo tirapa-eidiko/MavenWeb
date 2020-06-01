@@ -1,0 +1,1 @@
+FROM tirapareddy/aceapp:latest
