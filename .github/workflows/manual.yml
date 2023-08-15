@@ -61,13 +61,13 @@ jobs:
             ASSIGNEE=$(jq -r '.assignee' user.json)
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
-            if [[ -z "${USER_EMAIL}" ]]; then
+            if [[ -z "${{USER_EMAIL}}" ]]; then
               echo "Email is Null Pelase configure your email id in your profile..!!!!!"
             else
               echo "Email id is ${USER_EMAIL}"
             fi
 
-             if [[ -z "${ASSIGNEE}" ]]; then
+             if [[ -z "${{ASSIGNEE}}" ]]; then
               echo "No ASSIGNEE has been assigned for this issue!"
             else
               echo "ASSIGNEE  is ${ASSIGNEE}"
