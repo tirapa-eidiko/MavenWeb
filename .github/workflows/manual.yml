@@ -52,9 +52,9 @@ jobs:
             minutes=$(( (time_difference % 3600) / 60 ))
             seconds=$((time_difference % 60))
 
-            echo "Time Difference: $hours hours, $minutes minutes, $seconds seconds"
+            echo "It's been $hours hours, $minutes minutes, $seconds seconds since ${ISSUE_TITLE} created"
 
 
-            echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${created_at} and Updated at ${updated_dt} "
+            echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${created_at} as it's been  $hours hours, $minutes minutes, $seconds seconds since it's created \n\n"
 
           done
