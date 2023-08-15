@@ -39,9 +39,19 @@ jobs:
             ISSUE_TITLE=$(_jq '.title')
             ISSUE_BODY=$(_jq '.body')
             ISSUE_USER=$(_jq '.user.login')
-            CD=$(_jq '.created_at')
-            UD=$(_jq '.updated_at')
+            created_at=$(_jq '.created_at')
+            updated_at=$(_jq '.updated_at')
+          
+            created_dt=$(date -u -d "$created_at" +"%s")
+            updated_dt=$(date -u -d "$updated_at" +"%s")
 
+            time_difference=$((updated_dt - created_dt))
+
+            hours=$((time_difference / 3600))
+            minutes=$(( (time_difference % 3600) / 60 ))
+            seconds=$((time_difference % 60))
+
+            echo "Time Difference: $hours hours, $minutes minutes, $seconds seconds"
 
 
             echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${CD} and Updated at ${UD} "
