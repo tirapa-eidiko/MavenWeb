@@ -58,12 +58,10 @@ jobs:
             USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
             echo "${USER_DATA}" > user.json
             USER_EMAIL=$(jq -r '.email' user.json)
-            echo "Local variable is set to $USER_EMAIL"
-            echo "{local_user}={$(jq -r '.email' user.json)}" >> $GITHUB_OUTPUT
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
             if [[ -z "${USER_EMAIL}" ]]; then
-              echo "Email is Null Pelase configure your email id in your profile..!!"
+              echo "Email is Null Pelase configure your email id in your profile..!!!!!"
             else
               echo "Email id is ${USER_EMAIL}"
             fi
