@@ -60,7 +60,7 @@ jobs:
             echo "${USER_DATA}" > user.json
             USER_EMAIL=$(jq -r '.email' user.json)
             echo "Local variable is set to $USER_EMAIL"
-            echo "::set-output name=local_user::$local_var"
+            echo "::set-output name=local_user::$USER_EMAIL"
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
             if [[ -z "${{ steps.set-local-variable.outputs.local_user }}" ]]; then
