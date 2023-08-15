@@ -48,7 +48,19 @@ jobs:
           RESPONSE=$(curl -sSL -H "Authorization: token ${TOKEN}" "${API_URL}")
           echo "${RESPONSE}"
 
-          for ISSUE in $(echo "${RESPONSE}" | jq -r '.[] | @base64'); do
+          for ISSUE in $(echo "${ISSUES}" | jq -r '.[] | @base64'); do
             _jq() {
               echo ${ISSUE} | base64 --decode | jq -r ${1}
             }
+
+            ISSUE_TITLE=$(_jq '.title')
+            ISSUE_BODY=$(_jq '.body')
+            ISSUE_USER=$(_jq '.user.login')
+
+            SENDGRID_API_KEY="${{ secrets.SENDGRID_API_KEY }}"
+            SENDGRID_TEMPLATE_ID="YOUR_SENDGRID_TEMPLATE_ID"
+
+            echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE}"
+
+            echo "SendGrid response: ${RESPONSE}"
+          done
