@@ -41,6 +41,7 @@ jobs:
             ISSUE_USER=$(_jq '.user.login')
             created_at=$(_jq '.created_at')
             updated_at=$(_jq '.updated_at')
+            I_NUM=$(_jq '.number')
             current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           
             created=$(date -u -d "$created_at" +"%s")
@@ -52,7 +53,7 @@ jobs:
             minutes=$(( (time_difference % 3600) / 60 ))
             seconds=$((time_difference % 60))
 
-            echo "It's been $hours hours, $minutes minutes, $seconds seconds since ${ISSUE_TITLE} created"
+            echo "It's been $hours hours, $minutes minutes, $seconds seconds since #{I_NUM} : ${ISSUE_TITLE} created"
 
 
             echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${created_at} as it's been  $hours hours, $minutes minutes, $seconds seconds since it's created"
