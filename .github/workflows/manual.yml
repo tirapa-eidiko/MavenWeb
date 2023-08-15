@@ -46,9 +46,9 @@ jobs:
           
           echo "Fetching open issues..."
           RESPONSE=$(curl -sSL -H "Authorization: token ${TOKEN}" "${API_URL}")
-          echo "${RESPONSE}"
+         
 
-          for ISSUE in $(echo "${ISSUES}" | jq -r '.[] | @base64'); do
+          for ISSUE in $(echo "${RESPONSE}" | jq -r '.[] | @base64'); do
             _jq() {
               echo ${ISSUE} | base64 --decode | jq -r ${1}
             }
@@ -62,5 +62,5 @@ jobs:
 
             echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE}"
 
-            echo "SendGrid response: ${RESPONSE}"
+            echo "SendGrid response: ${ISSUE}"
           done
