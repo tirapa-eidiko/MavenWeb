@@ -56,8 +56,12 @@ jobs:
             seconds=$((time_difference % 60))
 
             USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
-
+            echo "${USER_DATA}"
             echo "${USER_DATA}" > user.json
+
+            MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
+
+            echo "User's Manager Login: ${MANAGER_LOGIN}"
 
             echo "It's been $hours hours, $minutes minutes, $seconds seconds since #${I_NUM} : ${ISSUE_TITLE} created"
 
