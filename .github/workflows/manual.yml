@@ -70,7 +70,7 @@ jobs:
              if [[ -z ${ASSIGNEE} ]]; then
               echo "No ASSIGNEE has been assigned for this issue!"
             else
-              echo "ASSIGNEE  is ${ASSIGNEE[0]}"
+              echo "ASSIGNEE  is ${ASSIGNEE}"
             fi
 
             echo "User's Manager Login: ${MANAGER_LOGIN}"
