@@ -41,9 +41,10 @@ jobs:
             ISSUE_USER=$(_jq '.user.login')
             created_at=$(_jq '.created_at')
             updated_at=$(_jq '.updated_at')
+            current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           
             created=$(date -u -d "$created_at" +"%s")
-            updated=$(date -u -d "$updated_at" +"%s")
+            updated=$(date -u -d "$current_date" +"%s")
 
             time_difference=$((updated - created))
 
