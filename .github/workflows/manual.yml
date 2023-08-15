@@ -28,6 +28,7 @@ jobs:
           REPO_NAME="${{ github.event.repository.name }}"
           API_URL="https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/issues?state=open"
           
+          
           echo "Fetching open issues..."
           python -c "print('\n\n')"
           RESPONSE=$(curl -sSL -H "Authorization: token ${TOKEN}" "${API_URL}")
@@ -40,11 +41,11 @@ jobs:
             ISSUE_TITLE=$(_jq '.title')
             ISSUE_BODY=$(_jq '.body')
             ISSUE_USER=$(_jq '.user.login')
+            UP_API_URL="https://api.github.com/users/${ISSUE_USER}"
             created_at=$(_jq '.created_at')
             updated_at=$(_jq '.updated_at')
             I_NUM=$(_jq '.number')
             current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
-          
             created=$(date -u -d "$created_at" +"%s")
             updated=$(date -u -d "$current_date" +"%s")
 
@@ -53,6 +54,10 @@ jobs:
             hours=$((time_difference / 3600))
             minutes=$(( (time_difference % 3600) / 60 ))
             seconds=$((time_difference % 60))
+
+            USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
+
+            echo "${USER_DATA}" > user.json
 
             echo "It's been $hours hours, $minutes minutes, $seconds seconds since #${I_NUM} : ${ISSUE_TITLE} created"
 
