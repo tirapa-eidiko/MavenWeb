@@ -42,10 +42,10 @@ jobs:
             created_at=$(_jq '.created_at')
             updated_at=$(_jq '.updated_at')
           
-            created_dt=$(date -u -d "$created_at" +"%s")
-            updated_dt=$(date -u -d "$updated_at" +"%s")
+            created=$(date -u -d "$created_at" +"%s")
+            updated=$(date -u -d "$updated_at" +"%s")
 
-            time_difference=$((updated_dt - created_dt))
+            time_difference=$((updated - created))
 
             hours=$((time_difference / 3600))
             minutes=$(( (time_difference % 3600) / 60 ))
