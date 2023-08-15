@@ -45,7 +45,7 @@ jobs:
             created_at=$(_jq '.created_at')
             updated_at=$(_jq '.updated_at')
             I_NUM=$(_jq '.number')
-            ASSIGNEE=$(_jq '.assignees')
+            ASSIGNEE=$(_jq '.assignee')
             current_date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
             created=$(date -u -d "$created_at" +"%s")
             updated=$(date -u -d "$current_date" +"%s")
