@@ -39,9 +39,11 @@ jobs:
             ISSUE_TITLE=$(_jq '.title')
             ISSUE_BODY=$(_jq '.body')
             ISSUE_USER=$(_jq '.user.login')
+            CD=$(_jq '.created_at')
+            UD=$(_jq '.updated_at')
 
 
 
-            echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE}"
+            echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${CD} and Updated at ${UD} "
 
           done
