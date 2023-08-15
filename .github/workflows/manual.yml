@@ -62,7 +62,7 @@ jobs:
             #echo "USER_EMAIL=${USER_EMAIL}" >> $GITHUB_ENV
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
-            if [[ -z "${{USER_EMAIL}} ]]; then
+            if [[ -z ${USER_EMAIL} ]]; then
               echo "Email is Null Pelase configure your email id in your profile..!!"
             else
               echo "Email id is ${USER_EMAIL}"
