@@ -56,7 +56,6 @@ jobs:
             seconds=$((time_difference % 60))
 
             USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
-            echo "${USER_DATA}"
             echo "${USER_DATA}" > user.json
             USER_EMAIL=$(jq -r '.email' user.json)
             echo "Local variable is set to $USER_EMAIL"
