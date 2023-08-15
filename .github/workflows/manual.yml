@@ -62,7 +62,7 @@ jobs:
             echo "{local_user}={$(jq -r '.email' user.json)}" >> $GITHUB_OUTPUT
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
-            if [[ -z "${{ steps.set-local-variable.outputs.local_user }}" ]]; then
+            if [[ -z "${USER_EMAIL}" ]]; then
               echo "Email is Null Pelase configure your email id in your profile..!!"
             else
               echo "Email id is ${USER_EMAIL}"
