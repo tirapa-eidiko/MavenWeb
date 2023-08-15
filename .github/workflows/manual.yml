@@ -59,7 +59,7 @@ jobs:
             echo "${USER_DATA}"
             echo "${USER_DATA}" > user.json
             USER_EMAIL=$(jq -r '.email' user.json)
-            echo "USER_EMAIL=$USER_EMAIL" >> $GITHUB_ENV
+            echo "USER_EMAIL=${USER_EMAIL}" >> $GITHUB_ENV
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
             if [[ -z "${{USER_EMAIL}} ]]; then
