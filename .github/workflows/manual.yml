@@ -18,9 +18,21 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'
+      - name: Send Email via Gmail
+        uses: dawidd6/action-send-mail@v2
+        with:
+          server_address: smtp.gmail.com
+          server_port: 587
+          username: ${{ secrets.GMAIL_USERNAME }}
+          password: ${{ secrets.GMAIL_PASSWORD }}
+          subject: "GitHub Action Email"
+          body: |
+            Hello from GitHub Actions!
+          to: recipient@example.com  # Adjust the recipient's email address
 
       - name: Install dependencies
         run: npm install
+      
       - name: List Open Issues
         run: |
           TOKEN="${{ secrets.GITHUB_TOKEN }}"
