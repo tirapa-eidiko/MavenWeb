@@ -21,7 +21,6 @@ jobs:
       - name: Send Email via Gmail
         uses: dawidd6/action-send-mail@v2
         with:
-          environment: uat
           server_address: smtp.gmail.com
           server_port: 587
           username: ${{ secrets.GMAIL_USERNAME }}
