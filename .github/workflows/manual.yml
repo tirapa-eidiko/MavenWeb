@@ -22,6 +22,7 @@ jobs:
         uses: dawidd6/action-send-mail@v2
         with:
           server_address: smtp.gmail.com
+          from: tondaputirapareddy22@gmail.com
           server_port: 587
           username: ${{ secrets.GMAIL_USERNAME }}
           password: ${{ secrets.GMAIL_PASSWORD }}
