@@ -76,19 +76,20 @@ jobs:
               echo "USER_EMAIL is not null. Its value is: $USER_EMAIL"
             fi
 
+            ASSIGN_API_URL="https://api.github.com/repos/${{ github.repository }}/issues/${I_NUM}"
+            
             if [ -z "$ASSIGNEE" ] || [ "$ASSIGNEE" = "null" ]; then
               echo "No ASSIGNEE has been assigned for this issue!"
+              RESPONSE=$(curl -sSL -H "Authorization: token ${TOKEN}" -X PATCH -d '{"assignees": ["'"${ISSUE_USER}"'"]}' "${ASSIGN_API_URL}")
+              echo "Issue assigned to ${ISSUE_USER}"
             else
               echo "ASSIGNEE  is ${ASSIGNEE}"
             fi
 
             echo "It's been $hours hours, $minutes minutes, $seconds seconds since #${I_NUM} : ${ISSUE_TITLE} created"
 
-
             echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${created_at} as it's been  $hours hours, $minutes minutes, $seconds seconds since it's created"
-            ASSIGN_API_URL="https://api.github.com/repos/${{ github.repository }}/issues/${I_NUM}"
-            RESPONSE=$(curl -sSL -H "Authorization: token ${TOKEN}" -X PATCH -d '{"assignees": ["'"${ISSUE_USER}"'"]}' "${ASSIGN_API_URL}")
-            echo "Issue assigned to ${ISSUE_USER}"
+           
             python -c "print('\n\n')"
 
           done
