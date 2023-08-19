@@ -64,6 +64,12 @@ jobs:
             
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
+            if [ -z "$USER_EMAIL" ]; then
+              echo "Variable USER_EMAIL is null."
+            else
+              echo "Variable USER_EMAIL is not null. Its value is: $MY_VARIABLE"
+            fi
+
             if [[ -z ${USER_EMAIL} ]]; then
               echo "Email is Null Pelase configure your email id in your profile..!!!!!"
             else
