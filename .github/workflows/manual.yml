@@ -64,10 +64,10 @@ jobs:
             
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
 
-            if [ -z "$USER_EMAIL" ]; then
+            if [ -z "$MANAGER_LOGIN" ]; then
               echo "Variable USER_EMAIL is null."
             else
-              echo "Variable USER_EMAIL is not null. Its value is: $MY_VARIABLE"
+              echo "Variable USER_EMAIL is not null. Its value is: $MANAGER_LOGIN"
             fi
 
             if [[ -z ${USER_EMAIL} ]]; then
