@@ -2,10 +2,18 @@ name: custom
 
 on:
   workflow_dispatch:
+    ref:
+        description: 'Custom parameter'
+        default: 'master'
+        required: true
     inputs:
       ref:
         description: 'Custom parameter'
         default: 'master'
+        required: true
+      buf:
+        description: 'Custom parameter'
+        default: 'tesst'
         required: true
 
 jobs:
