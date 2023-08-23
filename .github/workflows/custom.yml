@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Print Custom Parameter
+      - name: Triggering Workflow for Issue Creation
         run: |
           echo "Custom parameter value: ${{ github.event.inputs.ref}}"
           echo "Custom parameter value: ${{ github.event.ref}}"
