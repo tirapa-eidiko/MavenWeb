@@ -2,10 +2,6 @@ name: custom
 
 on:
   workflow_dispatch:
-    ref:
-        description: 'Custom parameter'
-        default: 'refs/heads/master'
-        required: false
     inputs:
       ref:
         description: 'Custom parameter'
@@ -15,6 +11,10 @@ on:
         description: 'Custom parameter'
         default: 'tesst'
         required: false
+      obj:
+        type: choice
+        description: 'Custom parameter'
+       
 
 jobs:
   custom:
