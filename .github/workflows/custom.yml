@@ -5,16 +5,16 @@ on:
     ref:
         description: 'Custom parameter'
         default: 'master'
-        required: true
+        required: false
     inputs:
       ref:
         description: 'Custom parameter'
         default: 'master'
-        required: true
+        required: false
       buf:
         description: 'Custom parameter'
         default: 'tesst'
-        required: true
+        required: false
 
 jobs:
   custom:
