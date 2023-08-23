@@ -1,0 +1,16 @@
+name: API Triggered Workflow
+
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Custom parameter'
+        required: true
+
+jobs:
+  trigger_workflow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Print Custom Parameter
+        run: echo "Custom parameter value: ${{ github.event.inputs.ref}}"
