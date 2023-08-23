@@ -24,3 +24,4 @@ jobs:
       - name: Print Custom Parameter
         run: |
           echo "Custom parameter value: ${{ github.event.inputs.ref}}"
+          echo "Custom parameter value: ${{ github.event.ref}}"
