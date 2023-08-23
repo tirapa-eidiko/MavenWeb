@@ -5,6 +5,7 @@ on:
     inputs:
       ref:
         description: 'Custom parameter'
+        default: 'master'
         required: true
 
 jobs:
