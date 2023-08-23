@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     ref:
         description: 'Custom parameter'
-        default: 'master'
+        default: 'refs/heads/master'
         required: false
     inputs:
       ref:
