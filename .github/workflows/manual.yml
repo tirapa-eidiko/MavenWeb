@@ -56,14 +56,14 @@ jobs:
             seconds=$((time_difference % 60))
             echo "TWO"
             USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
-             echo "2.2"
+            echo "2.2"
             echo "${USER_DATA}" > user.json
-             echo "2.3"
+            echo "2.3"
             USER_EMAIL=$(jq -r '.email' user.json)
-             echo "2.4"
+            echo "2.4"
             
             MANAGER_LOGIN=$(jq -r '.manager_login' user.json)
-             echo "2.5"
+            echo "2.5"
             echo "THREE"
             if [ -z "$MANAGER_LOGIN" ] || [ "$MANAGER_LOGIN" = "null" ]; then
               echo "MANAGER_LOGIN is null."
