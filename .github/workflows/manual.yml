@@ -18,7 +18,23 @@ jobs:
         with:
           node-version: '14'
       - name: Install dependencies
-        run: npm install      
+        run: npm install
+      - name: Delete Issues
+        run: |
+          TOKEN="${{ secrets.GITHUB_TOKEN }}"
+          REPO_OWNER="${{ github.repository_owner }}"  # Replace with your GitHub username
+          REPO_NAME="${{ github.event.repository.name }}"   # Replace with your repository name
+
+          ISSUES=$(curl -X GET -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github.v3+json" \
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues?state=open" | jq -r '.[] | select(.number > 20) | .number')
+
+          for ISSUE_NUMBER in $ISSUES; do
+            curl -X DELETE -H "Authorization: Bearer $TOKEN" \
+              -H "Accept: application/vnd.github.v3+json" \
+              "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues/$ISSUE_NUMBER"
+            echo "Deleted issue number $ISSUE_NUMBER"
+          done
       - name: List Open Issues
         run: |
           TOKEN="${{ secrets.GITHUB_TOKEN }}"
