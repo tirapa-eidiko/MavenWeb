@@ -27,7 +27,7 @@ jobs:
 
           ISSUES=$(curl -X GET -H "Authorization: Bearer $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
-            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues?state=open" | jq -r '.[] | select(.number > 20) | .number')
+            "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues?state=open&per_page=300" | jq -r '.[] | select(.number > 20) | .number')
           echo "Issues: $ISSUES"
           for ISSUE_NUMBER in $ISSUES; do
             curl -X PATCH -H "Authorization: Bearer $TOKEN" \
