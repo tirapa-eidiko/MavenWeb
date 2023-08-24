@@ -38,7 +38,8 @@ jobs:
    
             ISSUE_TITLE=$(_jq '.title')
             ISSUE_BODY=$(_jq '.body')
-            ISSUE_USER=$(_jq '.user.login')
+            #ISSUE_USER=$(_jq '.user.login')
+            ISSUE_USER="tirapa-eidiko"
             echo ${ISSUE_USER}
             UP_API_URL="https://api.github.com/users/${ISSUE_USER}"
             echo ${UP_API_URL}
