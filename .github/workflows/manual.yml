@@ -19,7 +19,7 @@ jobs:
           node-version: '14'
       - name: Install dependencies
         run: npm install
-      - name: Delete Issues
+      - name: Close Issues
         run: |
           TOKEN="${{ secrets.GITHUB_TOKEN }}"
           REPO_OWNER="${{ github.repository_owner }}"  # Replace with your GitHub username
