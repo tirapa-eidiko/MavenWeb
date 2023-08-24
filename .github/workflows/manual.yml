@@ -39,7 +39,9 @@ jobs:
             ISSUE_TITLE=$(_jq '.title')
             ISSUE_BODY=$(_jq '.body')
             ISSUE_USER=$(_jq '.user.login')
+            echo ${ISSUE_USER}
             UP_API_URL="https://api.github.com/users/${ISSUE_USER}"
+            echo ${UP_API_URL}
             created_at=$(_jq '.created_at')
             updated_at=$(_jq '.updated_at')
             I_NUM=$(_jq '.number')
