@@ -35,7 +35,7 @@ jobs:
             _jq() {
               echo ${ISSUE} | base64 --decode | jq -r ${1}
             }
-
+   
             ISSUE_TITLE=$(_jq '.title')
             ISSUE_BODY=$(_jq '.body')
             ISSUE_USER=$(_jq '.user.login')
@@ -54,6 +54,7 @@ jobs:
             hours=$((time_difference / 3600))
             minutes=$(( (time_difference % 3600) / 60 ))
             seconds=$((time_difference % 60))
+            ISSUE_RESPONSE=$(curl -X POST -H "Authorization: token ${TOKEN}" -d "{\"title\":\"TEST\",\"body\":\"Test\"}" "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues")
             echo "TWO"
             USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
             echo "2.2"
