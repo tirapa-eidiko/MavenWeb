@@ -28,7 +28,7 @@ jobs:
           ISSUES=$(curl -X GET -H "Authorization: Bearer $TOKEN" \
             -H "Accept: application/vnd.github.v3+json" \
             "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues?state=open" | jq -r '.[] | select(.number > 20) | .number')
-          echo $ISSUES
+          echo "Issues: $ISSUES"
           for ISSUE_NUMBER in $ISSUES; do
             curl -X PATCH -H "Authorization: Bearer $TOKEN" \
               -H "Accept: application/vnd.github.v3+json" \
@@ -74,7 +74,6 @@ jobs:
             hours=$((time_difference / 3600))
             minutes=$(( (time_difference % 3600) / 60 ))
             seconds=$((time_difference % 60))
-            ISSUE_RESPONSE=$(curl -X POST -H "Authorization: token ${TOKEN}" -d "{\"title\":\"$I_NUM\",\"body\":\"$I_NUM\"}" "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues")
             echo "TWO"
             USER_DATA=$(curl -sSL -H "Authorization: token ${TOKEN}" "${UP_API_URL}")
             echo "2.2"
@@ -108,7 +107,7 @@ jobs:
               echo "ASSIGNEE  is ${ASSIGNEE}"
             fi
             echo "SIX"
-            ISSUE_RESPONSE=$(curl -X POST -H "Authorization: token ${TOKEN}" -d "{\"title\":\"TEST\",\"body\":\"Test\"}" "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues")
+            ISSUE_RESPONSE=$(curl -X POST -H "Authorization: token ${TOKEN}" -d "{\"title\":\"$I_NUM\",\"body\":\"$I_NUM\"}" "https://api.github.com/repos/$REPO_OWNER/$REPO_NAME/issues")
             echo $ISSUE_RESPONSE
             echo "It's been $hours hours, $minutes minutes, $seconds seconds since #${I_NUM} : ${ISSUE_TITLE} created"
             echo "Sending email to ${ISSUE_USER} about issue: ${ISSUE_TITLE} created at ${created_at} as it's been  $hours hours, $minutes minutes, $seconds seconds since it's created"           
