@@ -1,1 +1,20 @@
+on:
+  push:
+    branches: [ source ]
+  pull_request:
+    branches: [ source ]
+  workflow_dispatch:
+  # Allows external webhook trigger
+  repository_dispatch:
+    types:
+      - webhook
+jobs:
+  custom:
+    runs-on: ubuntu-latest
 
+    steps:
+      - name: Triggering Workflow for Issue Creation
+        run: |
+          echo "Custom parameter value: ${{ github.event.inputs.ref}}"
+          echo "Custom parameter value: ${{ github.event.ref}}"
+          echo "Custom parameter value: ${{ github.event.inputs.obj.one}}"
