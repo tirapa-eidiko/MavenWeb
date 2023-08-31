@@ -5,6 +5,9 @@ on:
     branches: [ source ]
   workflow_dispatch:
   # Allows external webhook trigger
+  issues:
+    types:
+      - opened
   repository_dispatch:
     types:
       - webhook
